@@ -1,5 +1,5 @@
 import React from "react";
-import * as s from "../globalStyles";
+import * as s from "../styles/Global.styles";
 
 const ModalCustom = ({ modalShow, setModalShow, content, title }) => {
     const CloseModal = () => (

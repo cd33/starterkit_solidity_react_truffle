@@ -1,0 +1,87 @@
+******************************************
+HEROKU
+
+truffle compile
+truffle migrate --network matic --reset
+heroku login
+(Première fois) heroku create starterkit_solidity_react --buildpack mars/create-react-app
+git add .
+git commit -m "done"
+git subtree push --prefix client/ heroku master
+
+SI ERREUR LORS DE LA MIGRATION, METTRE LE process.env.INFURA DIRECTEMENT DANS LE TRUFFLE-CONFIG
+
+******************************************
+GitHub Pages
+
+Dans le dossier ./client :
+npm install --save gh-pages
+
+Dans ./client/package.json ajoutez :
+"homepage": "https://cd33.github.io/starterkit_solidity_react",
+
+Ajoutez les options suivantes dans la section "scripts" du ./client/package.json : 
+"predeploy": "npm run build", 
+"deploy": "gh-pages -d build"
+
+cd client
+npm run deploy
+
+******************************************
+Déploiement MATIC POLYGON
+https://faucet.polygon.technology/
+truffle migrate --network matic --reset
+
+matic: {
+      provider: () => new HDWalletProvider(process.env.MNEMONIC, 
+      'wss://speedy-nodes-nyc.moralis.io/b48811af94e55510db5ac92f/polygon/mumbai/ws'),
+      network_id: 80001,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+    },
+
+metamask:
+https://speedy-nodes-nyc.moralis.io/b48811af94e55510db5ac92f/polygon/mumbai
+80001
+MATIC
+
+supprimer les ./client/contracts de avant de deployer
+
+adresses qui marche:
+"https://matic-mumbai.chainstacklabs.com"
+"wss://matic-testnet-archive-ws.bwarelabs.com"
+'wss://speedy-nodes-nyc.moralis.io/b48811af94e55510db5ac92f/polygon/mumbai/ws'
+
+NON TESTé (--compile-none après --reset)
+
+******************************************
+TESTS
+truffle test ./test/UnlimitedEvolution.test.js --network development
+
+******************************************
+solidity-docgen (generateur readme avec commentaires NatSpec)
+
+Exemple: Version 0.8.9
+npm install solidity-docgen
+npm install -D solc-0.8.9@npm:solc@^0.8.9
+npx solidity-docgen --solc-module solc-0.8.9
+
+******************************************
+*** Envoyer eth entre les differents accounts ganache ***
+truffle console
+web3.eth.sendTransaction({to:accounts[0], from:accounts[5], value: web3.utils.toWei('99.9')})
+
+******************************************
+GIT
+Si commit avant .gitignore
+git rm --cached nomdufichier
+
+******************************************
+Problème webpack:
+1. Delete package-lock.json and/or yarn.lock in your project folder.
+2. Delete node_modules in your project folder.
+3. Add "webpack": "4.41.0" to the "dependencies" in package.json.
+4. Run npm install or yarn, depending on the package manager you use.
+
+******************************************

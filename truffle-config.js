@@ -19,6 +19,14 @@ module.exports = {
      port: 7545,            // Standard Ethereum port (default: none)
      network_id: 1337,       // Any network (default: none)
     },
+    rinkeby: {
+      provider: () => new HDWalletProvider(process.env.MNEMONIC, process.env.INFURA),
+      network_id: 4,
+      gas: 5500000,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+    },
     kovan: {
       provider: () => new HDWalletProvider(process.env.MNEMONIC, process.env.INFURA),
       network_id: 42,
@@ -27,10 +35,27 @@ module.exports = {
       timeoutBlocks: 200,
       skipDryRun: true,
     },
+    matic: {
+      provider: () =>
+        new HDWalletProvider(
+          process.env.MNEMONIC,
+          "https://matic-mumbai.chainstacklabs.com"
+          // https://rpc-mumbai.matic.today
+          // "wss://matic-testnet-archive-ws.bwarelabs.com"
+          // "wss://speedy-nodes-nyc.moralis.io/b48811af94e55510db5ac92f/polygon/mumbai/ws"
+          // "https://rpc-mumbai.maticvigil.com"
+          // "https://rpc-mumbai.maticvigil.com/v1/f2387a4807471c5ee85d53e6e1ce04086d27b35c"
+          // "wss://ws-matic-mumbai.chainstacklabs.com"
+        ),
+      network_id: 80001,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+    },
   },
   compilers: {
     solc: {
-      version: "0.8.10",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.8.7",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       settings: {          // See the solidity docs for advice about optimization and evmVersion
        optimizer: {
