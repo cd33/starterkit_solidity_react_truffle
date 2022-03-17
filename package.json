@@ -1,28 +1,19 @@
 {
-  "name": "starterkit_solidity_react",
+  "name": "starterkit_solidity_react_truffle",
   "version": "1.0.0",
-  "description": "Mon starterkit pour projet Solidity/React",
+  "description": "Mon starterkit pour projet Solidity/React/Truffle",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cd33/starterkit_solidity_react.git"
-  },
   "author": "cd33",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cd33/starterkit_solidity_react/issues"
-  },
-  "homepage": "https://github.com/cd33/starterkit_solidity_react#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.4.0",
-    "@truffle/hdwallet-provider": "^2.0.0",
-    "dotenv": "^10.0.0",
-    "webpack": "4.41.0"
+    "@openzeppelin/contracts": "4.5.0",
+    "@truffle/hdwallet-provider": "2.0.4",
+    "dotenv": "16.0.0",
+    "webpack": "4.44.2"
   },
   "devDependencies": {
-    "@openzeppelin/test-helpers": "^0.5.15"
+    "@openzeppelin/test-helpers": "0.5.15"
   }
 }
